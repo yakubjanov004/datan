@@ -118,7 +118,7 @@ export default function LoginPage() {
 
       <footer className="login-footer">
         <strong>{t.common.version} 1.0.0</strong>
-        <span>&copy; Reestr Telecom {new Date().getFullYear()}</span>
+        <span>&copy; Datan {new Date().getFullYear()}</span>
       </footer>
     </main>
   );

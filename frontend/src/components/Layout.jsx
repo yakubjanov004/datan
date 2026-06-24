@@ -26,7 +26,7 @@ export default function Layout() {
               <Menu size={18} />
             </button>
             <div>
-              <p className="eyebrow">Reestr Telecom</p>
+              <p className="eyebrow">Datan</p>
               <h1>{user?.role === "manager" ? t.layout.managerPanel : t.layout.operatorPanel}</h1>
             </div>
           </div>

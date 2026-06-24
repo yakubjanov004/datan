@@ -1,7 +1,7 @@
 export const GUIDE_TRANSLATIONS = {
   uz: {
     heroKicker: "Tizim qo'llanmasi",
-    title: "Reestr Telecomdan foydalanish qo'llanmasi",
+    title: "Datandan foydalanish qo'llanmasi",
     description:
       "Bu bo'lim sayt nima ish qilishi, qaysi rol nimalarni bajarishi va asosiy sahifalardan qanday foydalanishni skrinshot ko'rinishlari bilan tushuntiradi.",
     stats: {
@@ -163,7 +163,7 @@ export const GUIDE_TRANSLATIONS = {
   },
   "uz-cyrl": {
     heroKicker: "Тизим қўлланмаси",
-    title: "Reestr Telecomдан фойдаланиш қўлланмаси",
+    title: "Datanдан фойдаланиш қўлланмаси",
     description:
       "Бу бўлим сайт нима иш қилиши, қайси рол нималарни бажариши ва асосий саҳифалардан қандай фойдаланишни скриншот кўринишлари билан тушунтиради.",
     stats: {
@@ -325,7 +325,7 @@ export const GUIDE_TRANSLATIONS = {
   },
   ru: {
     heroKicker: "Инструкция по системе",
-    title: "Инструкция по работе с Reestr Telecom",
+    title: "Инструкция по работе с Datan",
     description:
       "Раздел объясняет, что делает сайт, какие действия выполняет каждая роль и как пользоваться основными страницами с визуальными примерами.",
     stats: {

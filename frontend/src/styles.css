@@ -1,31 +1,31 @@
 /* ═══════════════════════════════════════════════════════
-   REESTR TELECOM — Crextio Premium Design System
+   DATAN — Premium Design System
    ═══════════════════════════════════════════════════════ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-  /* ── Light Background — Crextio milky gradient ── */
-  --page-bg:          linear-gradient(160deg, #e8f0fe 0%, #dce8f8 30%, #d4e4f7 60%, #e0ebf9 100%);
-  --bg:               #e8f0fe;
+  /* ── Light Background — Datan Vibrant Gradient ── */
+  --page-bg:          linear-gradient(135deg, #f0ebf8 0%, #e6e9f5 30%, #f1f5f9 70%, #e0e7ff 100%);
+  --bg:               #f1f5f9;
   --bg-2:             rgba(255, 255, 255, 0.72);
   --bg-3:             rgba(255, 255, 255, 0.88);
   --panel:            rgba(255, 255, 255, 0.80);
   --panel-solid:      #ffffff;
-  --ink:              #0f1d31;
+  --ink:              #0f172a;
   --ink-dim:          #334155;
   --muted:            #64748b;
   --line:             rgba(0, 0, 0, 0.06);
   --line-strong:      rgba(0, 0, 0, 0.10);
 
-  /* ── Primary Accent — Crextio blue ── */
-  --blue:        #2563eb;
-  --blue-mid:    #1d4ed8;
-  --blue-deep:   #1e3a8a;
-  --blue-light:  #3b82f6;
-  --blue-soft:   rgba(37, 99, 235, 0.08);
-  --blue-hover:  rgba(37, 99, 235, 0.04);
-  --blue-glow:   rgba(37, 99, 235, 0.14);
+  /* ── Primary Accent — Datan Violet/Indigo ── */
+  --blue:        #6366f1;
+  --blue-mid:    #4f46e5;
+  --blue-deep:   #3730a3;
+  --blue-light:  #818cf8;
+  --blue-soft:   rgba(99, 102, 241, 0.08);
+  --blue-hover:  rgba(99, 102, 241, 0.12);
+  --blue-glow:   rgba(99, 102, 241, 0.18);
 
   /* ── Emerald Accent ── */
   --emerald:        #059669;
@@ -34,17 +34,17 @@
   --emerald-glow:   rgba(16, 185, 129, 0.12);
 
   /* ── Violet Accent ── */
-  --violet:           #6366f1;
-  --violet-light:     #818cf8;
-  --violet-soft:      rgba(99, 102, 241, 0.08);
+  --violet:           #8b5cf6;
+  --violet-light:     #a78bfa;
+  --violet-soft:      rgba(139, 92, 246, 0.08);
 
   /* ── Backward compatibility ── */
-  --teal:             #2563eb;
-  --teal-soft:        rgba(37, 99, 235, 0.1);
+  --teal:             #0ea5e9;
+  --teal-soft:        rgba(14, 165, 233, 0.1);
 
   /* ── Amber Accent ── */
-  --amber:            #d97706;
-  --amber-dark:       #b45309;
+  --amber:            #f59e0b;
+  --amber-dark:       #d97706;
   --amber-soft:       rgba(245, 158, 11, 0.08);
 
   /* ── Green Accent ── */
@@ -56,61 +56,61 @@
   --danger-soft:      rgba(239, 68, 68, 0.08);
 
   /* ── Sidebar ── */
-  --sidebar:          rgba(255, 255, 255, 0.55);
-  --sidebar-elevated: rgba(255, 255, 255, 0.85);
-  --sidebar-active:   rgba(37, 99, 235, 0.10);
+  --sidebar:          rgba(255, 255, 255, 0.65);
+  --sidebar-elevated: rgba(255, 255, 255, 0.90);
+  --sidebar-active:   rgba(99, 102, 241, 0.12);
   --sidebar-ink:      #1e293b;
   --sidebar-ink-strong: #0f172a;
-  --sidebar-accent:   #2563eb;
+  --sidebar-accent:   #6366f1;
 
-  /* ── Glass Styles — Crextio glassmorphism ── */
-  --glass:            rgba(255, 255, 255, 0.65);
-  --glass-border:     rgba(255, 255, 255, 0.45);
-  --glass-strong:     rgba(255, 255, 255, 0.88);
+  /* ── Glass Styles — Premium Glassmorphism ── */
+  --glass:            rgba(255, 255, 255, 0.70);
+  --glass-border:     rgba(255, 255, 255, 0.55);
+  --glass-strong:     rgba(255, 255, 255, 0.92);
 
-  /* ── Dark navy panel (onboarding-style) ── */
-  --navy:             #1a2744;
-  --navy-soft:        #1e3050;
+  /* ── Dark navy panel ── */
+  --navy:             #1e1b4b;
+  --navy-soft:        #312e81;
 }
 
 [data-theme="dark"] {
-  /* ── Deep Dark Blue Backgrounds ── */
-  --page-bg:          #0a1020;
-  --bg:               #0a1020;
+  /* ── Deep Dark Violet Backgrounds ── */
+  --page-bg:          #0b0a1a;
+  --bg:               #0b0a1a;
   --bg-2:             rgba(15, 23, 42, 0.85);
-  --bg-3:             #1e293b;
-  --panel:            rgba(10, 16, 32, 0.9);
-  --panel-solid:      #0a1020;
+  --bg-3:             #1e1b4b;
+  --panel:            rgba(15, 15, 30, 0.9);
+  --panel-solid:      #0b0a1a;
   --ink:              #f8fafc;
-  --ink-dim:          #e2e8f0;
+  --ink-dim:          #cbd5e1;
   --muted:            #94a3b8;
   --line:             rgba(148, 163, 184, 0.12);
-  --line-strong:      rgba(148, 163, 184, 0.22);
+  --line-strong:      rgba(148, 163, 184, 0.25);
 
   /* ── Primary Accent ── */
-  --blue:        #3b82f6;
-  --blue-mid:    #2563eb;
-  --blue-deep:   #1e3a8a;
-  --blue-light:  #60a5fa;
-  --blue-soft:   rgba(59, 130, 246, 0.15);
-  --blue-hover:  rgba(59, 130, 246, 0.10);
-  --blue-glow:   rgba(59, 130, 246, 0.2);
+  --blue:        #818cf8;
+  --blue-mid:    #6366f1;
+  --blue-deep:   #4f46e5;
+  --blue-light:  #a5b4fc;
+  --blue-soft:   rgba(129, 140, 248, 0.15);
+  --blue-hover:  rgba(129, 140, 248, 0.20);
+  --blue-glow:   rgba(129, 140, 248, 0.25);
 
   /* ── Sidebar ── */
-  --sidebar:          rgba(15, 23, 42, 0.7);
-  --sidebar-elevated: #1e293b;
-  --sidebar-active:   rgba(59, 130, 246, 0.15);
+  --sidebar:          rgba(15, 15, 30, 0.75);
+  --sidebar-elevated: #1e1b4b;
+  --sidebar-active:   rgba(129, 140, 248, 0.15);
   --sidebar-ink:      #f8fafc;
   --sidebar-ink-strong: #ffffff;
 
   /* ── Glass Styles ── */
-  --glass:            rgba(15, 23, 42, 0.75);
+  --glass:            rgba(15, 15, 30, 0.80);
   --glass-border:     rgba(148, 163, 184, 0.12);
-  --glass-strong:     rgba(15, 23, 42, 0.92);
+  --glass-strong:     rgba(15, 15, 30, 0.95);
 
   /* ── Dark navy ── */
-  --navy:             #0f1729;
-  --navy-soft:        #151f33;
+  --navy:             #0a0f1c;
+  --navy-soft:        #121b33;
 }
 
 /* ─── Reset & Box ─────────────────────────────────────── */
