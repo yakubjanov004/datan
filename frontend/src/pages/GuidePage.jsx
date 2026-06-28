@@ -23,11 +23,11 @@ import {
   effectiveRole,
   roleLabel
 } from "../auth/roles.js";
-import PageHero from "../components/PageHero.jsx";
 import { GUIDE_TRANSLATIONS } from "../localization/guide.js";
 import { useI18n } from "../localization/i18n.jsx";
 
-const stepIcons = {
+/* ── Icon map ── */
+const STEP_ICONS = {
   upload: UploadCloud,
   result: CheckCircle2,
   records: Search,
@@ -37,13 +37,22 @@ const stepIcons = {
   batches: History
 };
 
-const roleIntroIcons = {
+/* ── Gradient per role ── */
+const ROLE_GRADIENTS = {
+  [ROLE_OPERATOR]: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%)",
+  [ROLE_SUPERVISOR]: "linear-gradient(135deg, #7c3aed 0%, #6366f1 50%, #2563eb 100%)",
+  [ROLE_MANAGER]: "linear-gradient(135deg, #1e40af 0%, #1d4ed8 50%, #2563eb 100%)",
+  [ROLE_ADMIN]: "linear-gradient(135deg, #7c3aed 0%, #4f46e5 50%, #2563eb 100%)"
+};
+
+const ROLE_HERO_ICONS = {
   [ROLE_OPERATOR]: UploadCloud,
   [ROLE_SUPERVISOR]: UserCog,
   [ROLE_MANAGER]: Building2,
   [ROLE_ADMIN]: Building2
 };
 
+/* ── Mini Browser Preview ── */
 function MiniBrowser({ title, children }) {
   return (
     <div className="guide-shot" aria-label={title}>
@@ -60,8 +69,10 @@ function MiniBrowser({ title, children }) {
   );
 }
 
+/* ── Screenshot Mocks ── */
 function ScreenshotMock({ type, copy }) {
   const s = copy.screen[type];
+  if (!s) return null;
 
   if (type === "upload") {
     return (
@@ -174,6 +185,7 @@ function ScreenshotMock({ type, copy }) {
   return null;
 }
 
+/* ── Main Component ── */
 export default function GuidePage() {
   const { user } = useAuth();
   const { language, t } = useI18n();
@@ -182,74 +194,90 @@ export default function GuidePage() {
   const activeRole = copy.roles[userRole] ? userRole : ROLE_OPERATOR;
   const guide = copy.roles[activeRole] || copy.roles[ROLE_OPERATOR];
   const visibleSteps = guide.steps.filter((step) => step.screen !== "privacy" && step.icon !== "privacy");
-  const RoleIntroIcon = roleIntroIcons[activeRole] || BookOpenText;
-  const screenCount = new Set(visibleSteps.map((step) => step.screen)).size;
+  const HeroIcon = ROLE_HERO_ICONS[activeRole] || BookOpenText;
+  const gradient = ROLE_GRADIENTS[activeRole] || ROLE_GRADIENTS[ROLE_OPERATOR];
 
   return (
     <section className="page-stack guide-page">
-      <PageHero
-        kicker={copy.heroKicker}
-        title={guide.title}
-        description={guide.intro}
-        icon={RoleIntroIcon}
-        stats={[
-          { label: copy.stats.roles, value: roleLabel(t, activeRole), icon: Users },
-          { label: copy.stats.screens, value: screenCount, icon: Database },
-          { label: copy.stats.steps, value: visibleSteps.length, icon: ListChecks },
-          { label: copy.stats.language, value: "UZ/RU", icon: BookOpenText }
-        ]}
-      />
 
-      <section className="panel guide-overview github-style-panel">
-        <div className="stats-panel-head">
+      {/* ── Hero Banner (rolga qarab gradient) ── */}
+      <div className="guide-hero-banner" style={{ background: gradient }}>
+        <div className="guide-hero-content">
+          <div className="guide-hero-icon-wrap">
+            <HeroIcon size={26} strokeWidth={1.5} />
+          </div>
+          <div>
+            <span className="guide-hero-kicker">{copy.heroKicker}</span>
+            <h1>{guide.title}</h1>
+            <p>{guide.intro}</p>
+          </div>
+        </div>
+        <div className="guide-hero-stats">
+          <div className="guide-hero-stat">
+            <strong>{roleLabel(t, activeRole)}</strong>
+            <small>{copy.stats.roles}</small>
+          </div>
+          <div className="guide-hero-stat">
+            <strong>{visibleSteps.length}</strong>
+            <small>{copy.stats.steps}</small>
+          </div>
+          <div className="guide-hero-stat">
+            <strong>UZ/RU</strong>
+            <small>{copy.stats.language}</small>
+          </div>
+        </div>
+        <div className="guide-hero-decoration">
+          <div className="gd-circle gd-circle-1" />
+          <div className="gd-circle gd-circle-2" />
+        </div>
+      </div>
+
+      {/* ── Checklist ── */}
+      <section className="panel guide-checklist-panel">
+        <div className="guide-checklist-head">
           <div>
             <h2>{guide.checklistTitle}</h2>
-            <p>Tizimdan foydalanish bo'yicha ketma-ket qadamlar va ko'rsatmalar.</p>
+            <p>{copy.description || "Tizimdan foydalanish bo'yicha ketma-ket qadamlar."}</p>
           </div>
-          <ListChecks size={18} />
+          <ListChecks size={20} className="guide-checklist-icon" />
         </div>
-
-        <div className="guide-overview-grid">
-          <div className="guide-system-list">
-            {visibleSteps.map((step) => {
-              const Icon = stepIcons[step.icon] || CheckCircle2;
-              return (
-                <div key={step.title}>
-                  <Icon size={16} />
-                  <span>
-                    <strong>{step.title}</strong>
-                    <small>{step.text}</small>
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-          <div className="guide-checklist">
-            <h3>{guide.checklistTitle}</h3>
-            <ol>
-              {guide.checklist.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ol>
-          </div>
+        <div className="guide-checklist-items">
+          {guide.checklist.map((item, index) => (
+            <div className="guide-checklist-row" key={index}>
+              <div className="guide-checklist-num">{index + 1}</div>
+              <span>{item}</span>
+            </div>
+          ))}
         </div>
       </section>
 
-      <div className="guide-step-grid">
-        {visibleSteps.map((step) => {
-          const Icon = stepIcons[step.icon] || BookOpenText;
+      {/* ── Step-by-step cards (timeline) ── */}
+      <div className="guide-timeline">
+        {visibleSteps.map((step, index) => {
+          const Icon = STEP_ICONS[step.icon] || BookOpenText;
           return (
-            <article className="panel guide-step-card github-style-panel" key={step.title} style={{ display: 'flex', flexDirection: 'column', gap: '20px', padding: '24px' }}>
-              <div className="guide-step-copy">
-                <span className="guide-step-icon">
-                  <Icon size={18} />
-                </span>
-                <div>
-                  <h3 style={{ fontSize: '16px', fontWeight: '700', color: '#020617', margin: '0 0 6px 0' }}>{step.title}</h3>
-                  <p style={{ margin: 0, color: '#475569', fontSize: '13px', lineHeight: '1.6' }}>{step.text}</p>
+            <article className="guide-timeline-card" key={step.title}>
+              {/* Timeline connector */}
+              <div className="guide-timeline-line">
+                <div className="guide-timeline-dot">
+                  <span>{index + 1}</span>
                 </div>
+                {index < visibleSteps.length - 1 && <div className="guide-timeline-connector" />}
               </div>
-              <ScreenshotMock type={step.screen} copy={copy} t={t} />
+
+              {/* Content */}
+              <div className="panel guide-timeline-body">
+                <div className="guide-timeline-copy">
+                  <span className="guide-step-icon">
+                    <Icon size={18} />
+                  </span>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.text}</p>
+                  </div>
+                </div>
+                <ScreenshotMock type={step.screen} copy={copy} />
+              </div>
             </article>
           );
         })}

@@ -514,6 +514,17 @@ class StatsView(ScopedQuerysetMixin, APIView):
                     distinct=True,
                 ),
                 total_revenue=Sum("registry_records__payment_amount", filter=record_relation_filter),
+                last_upload_at=Max("upload_batches__created_at", filter=batch_relation_filter),
+                today_records=Count(
+                    "registry_records",
+                    filter=record_relation_filter & Q(registry_records__created_at__gte=today_start),
+                    distinct=True,
+                ),
+                today_uploads=Count(
+                    "upload_batches",
+                    filter=batch_relation_filter & Q(upload_batches__created_at__gte=today_start),
+                    distinct=True,
+                ),
             )
             .order_by("username")
         )
@@ -526,6 +537,11 @@ class StatsView(ScopedQuerysetMixin, APIView):
                 "uploads_count": operator.uploads_count,
                 "total_revenue": operator.total_revenue or 0,
                 "is_active": operator.is_active,
+                "last_upload_at": operator.last_upload_at.isoformat() if operator.last_upload_at else None,
+                "today_records": operator.today_records,
+                "today_uploads": operator.today_uploads,
+                "branch_name": operator.branch.name if operator.branch else "",
+                "region_name": operator.region.name if operator.region else "",
             }
             for operator in operator_rows
         ]

@@ -1,4 +1,4 @@
-﻿/* Russian translations. */
+/* Russian translations. */
 
 import { uz } from "./uz.js";
 
@@ -88,7 +88,9 @@ export const ru = {
     sections: {
       operations: "Основное",
       data: "Данные",
-      supervision: "Супервизор",
+      overview: "Обзор",
+      monitoring: "Мониторинг",
+      supervision: "Контроль",
       management: "Управление",
       admin: "Админ",
       system: "Супервизор"
@@ -116,6 +118,8 @@ export const ru = {
       operators: "Операторы",
       operatorsShort: "Операторы",
       audit: "Аудит",
+      monitoring: "Мониторинг операторов",
+      monitoringShort: "Мониторинг",
       managerWorkspace: "Панель менеджера",
       managerWorkspaceShort: "Менеджер",
       adminWorkspace: "Панель админа",
@@ -433,5 +437,32 @@ export const ru = {
       activated: "активирован",
       blocked: "заблокирован"
     }
+  },
+  monitoring: {
+    title: "Мониторинг операторов",
+    subtitle: "Отслеживайте активность операторов вашего региона в реальном времени",
+    operatorStatus: "Статус оператора",
+    todayActivity: "Активность сегодня",
+    timeline: "График загрузок",
+    lastUpload: "Последняя загрузка",
+    todayImports: "Импорт сегодня",
+    todayUploads: "Загрузок сегодня",
+    totalRecords: "Всего записей",
+    totalUploads: "Всего загрузок",
+    activeNow: "Активен",
+    inactive: "Не активен",
+    neverUploaded: "Нет загрузок",
+    noUploadsToday: "Сегодня не загружал",
+    uploadedToday: "Загружал сегодня",
+    allOperators: "Все операторы",
+    activeOperators: "Активные операторы",
+    missingToday: "Не загружали сегодня",
+    branchBreakdown: "По филиалам",
+    noOperators: "Операторы не найдены.",
+    timeAgo: "назад",
+    justNow: "Только что",
+    minutesAgo: "мин. назад",
+    hoursAgo: "ч. назад",
+    daysAgo: "дн. назад"
   }
 };

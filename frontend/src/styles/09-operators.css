@@ -295,7 +295,7 @@ select:focus-visible {
   height: 40px;
   border-radius: 12px;
   background: #ecfeff;
-  color: #0891b2;
+  color: #3b82f6;
 }
 
 .operators-sidebar .stat-card.green {
@@ -361,7 +361,7 @@ select:focus-visible {
 
 .operator-create-panel .panel-heading {
   min-height: 54px;
-  background: linear-gradient(135deg, #2563eb 0%, #1f7a8c 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   border-bottom: 0;
   padding: 16px 20px;
 }

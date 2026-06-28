@@ -162,7 +162,7 @@
   border: 0;
   background:
     radial-gradient(circle at 90% 14%, rgba(255, 255, 255, 0.22), transparent 28%),
-    linear-gradient(135deg, #1e63d6 0%, #1f7a8c 100%);
+    linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   color: #ffffff;
   padding: 22px;
   box-shadow: 0 16px 34px rgba(29, 78, 216, 0.18);
@@ -930,7 +930,7 @@
   align-items: center;
   min-height: 28px;
   border-radius: 999px;
-  background: linear-gradient(135deg, #2563eb 0%, #1f7a8c 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   color: #ffffff;
   padding: 0 12px;
   font-size: 11px;

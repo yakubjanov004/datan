@@ -591,3 +591,304 @@ input:-webkit-autofill:active {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════════
+   NEW: Guide Hero Banner, Checklist, Timeline
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Hero Banner ─────────────────────────────────────────────── */
+.guide-hero-banner {
+  border-radius: var(--radius-xl, 16px);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+  overflow: hidden;
+  min-height: 130px;
+}
+
+.guide-hero-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.guide-hero-icon-wrap {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.guide-hero-kicker {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 3px;
+}
+
+.guide-hero-banner h1 {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 750;
+  margin: 0 0 5px 0;
+  letter-spacing: -0.02em;
+}
+
+.guide-hero-banner p {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82rem;
+  margin: 0;
+  line-height: 1.55;
+  max-width: 500px;
+}
+
+.guide-hero-stats {
+  display: flex;
+  gap: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.guide-hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 16px;
+  min-width: 70px;
+}
+
+.guide-hero-stat strong {
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.guide-hero-stat small {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.guide-hero-decoration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.gd-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.gd-circle-1 {
+  width: 250px; height: 250px;
+  top: -80px; right: -40px;
+}
+
+.gd-circle-2 {
+  width: 150px; height: 150px;
+  bottom: -50px; left: 20%;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Checklist Panel ─────────────────────────────────────────── */
+.guide-checklist-panel {
+  border-radius: var(--radius-lg, 12px);
+}
+
+.guide-checklist-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 22px 0;
+}
+
+.guide-checklist-head h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+  margin: 0 0 3px;
+}
+
+.guide-checklist-head p {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #64748b);
+  margin: 0;
+}
+
+.guide-checklist-icon {
+  color: var(--text-tertiary, #94a3b8);
+  flex-shrink: 0;
+}
+
+.guide-checklist-items {
+  display: grid;
+  gap: 8px;
+  padding: 14px 22px 18px;
+}
+
+.guide-checklist-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 9px;
+  background: var(--bg-secondary, #f8fafc);
+  transition: border-color 0.2s;
+}
+
+.guide-checklist-row:hover {
+  border-color: #93c5fd;
+}
+
+.guide-checklist-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 7px;
+  background: #2563eb;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.guide-checklist-row span {
+  font-size: 0.82rem;
+  font-weight: 550;
+  color: var(--text-primary, #0f172a);
+  line-height: 1.5;
+  padding-top: 2px;
+}
+
+/* ── Timeline ────────────────────────────────────────────────── */
+.guide-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.guide-timeline-card {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+}
+
+.guide-timeline-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.guide-timeline-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.82rem;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.guide-timeline-connector {
+  width: 2px;
+  flex: 1;
+  min-height: 20px;
+  background: linear-gradient(180deg, #93c5fd 0%, #dbeafe 100%);
+}
+
+.guide-timeline-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  border-radius: var(--radius-lg, 12px);
+}
+
+.guide-timeline-copy {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.guide-timeline-copy h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary, #0f172a);
+  margin: 0 0 4px;
+}
+
+.guide-timeline-copy p {
+  font-size: 0.82rem;
+  color: var(--text-secondary, #64748b);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* ── Dark theme ──────────────────────────────────────────────── */
+[data-theme="dark"] .guide-checklist-num { background: #3b82f6; }
+[data-theme="dark"] .guide-timeline-dot { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+[data-theme="dark"] .guide-timeline-connector { background: linear-gradient(180deg, #3b82f6 0%, #1e3a5f 100%); }
+
+/* ── Responsive overrides ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .guide-hero-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 22px 20px;
+  }
+
+  .guide-hero-stats {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .guide-hero-banner h1 {
+    font-size: 1.1rem;
+  }
+
+  .guide-timeline-card {
+    grid-template-columns: 30px 1fr;
+    gap: 10px;
+  }
+
+  .guide-timeline-dot {
+    width: 28px;
+    height: 28px;
+    font-size: 0.7rem;
+    border-radius: 8px;
+  }
+
+  .guide-timeline-body {
+    padding: 16px;
+  }
+}

@@ -1,4 +1,4 @@
-﻿/* Uzbek Cyrillic translations. */
+/* Uzbek Cyrillic translations. */
 
 import { uz } from "./uz.js";
 
@@ -88,7 +88,9 @@ export const uzCyrl = {
     sections: {
       operations: "Асосий",
       data: "Маълумотлар",
-      supervision: "Супервизор",
+      overview: "Умумий",
+      monitoring: "Мониторинг",
+      supervision: "Назорат",
       management: "Бошқарув",
       admin: "Админ",
       system: "Супервизор"
@@ -116,6 +118,8 @@ export const uzCyrl = {
       operators: "Операторлар",
       operatorsShort: "Операторлар",
       audit: "Аудит",
+      monitoring: "Оператор мониторинг",
+      monitoringShort: "Мониторинг",
       managerWorkspace: "Менежер панели",
       managerWorkspaceShort: "Менежер",
       adminWorkspace: "Админ панели",
@@ -429,5 +433,32 @@ export const uzCyrl = {
       activated: "актив қилинди",
       blocked: "блокланди"
     }
+  },
+  monitoring: {
+    title: "Оператор мониторинг",
+    subtitle: "Ҳудудингиздаги операторлар фаоллигини реал вақтда кузатинг",
+    operatorStatus: "Оператор ҳолати",
+    todayActivity: "Бугунги фаоллик",
+    timeline: "Юклашлар жадвали",
+    lastUpload: "Охирги юклаш",
+    todayImports: "Бугун импорт",
+    todayUploads: "Бугун юклаш",
+    totalRecords: "Жами ёзув",
+    totalUploads: "Жами юклаш",
+    activeNow: "Фаол",
+    inactive: "Фаол эмас",
+    neverUploaded: "Ҳеч юклаш қилмаган",
+    noUploadsToday: "Бугун юкламаган",
+    uploadedToday: "Бугун юклаган",
+    allOperators: "Барча операторлар",
+    activeOperators: "Фаол операторлар",
+    missingToday: "Бугун юкламаган",
+    branchBreakdown: "Филиал кесими",
+    noOperators: "Операторлар топилмади.",
+    timeAgo: "олдин",
+    justNow: "Ҳозиргина",
+    minutesAgo: "дақиқа олдин",
+    hoursAgo: "соат олдин",
+    daysAgo: "кун олдин"
   }
 };

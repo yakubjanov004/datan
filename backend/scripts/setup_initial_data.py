@@ -16,7 +16,33 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "telecom_registry.settings")
 from create_database import main as ensure_database  # noqa: E402
 
 
-REGION_NAME = "Toshkent shahri"
+# ── Regions & branches ──────────────────────────────────────────────
+REGIONS = (
+    {
+        "name": "Toshkent shahri",
+        "branches": (
+            {"name": "Novza metro",        "code": "NOVZA"},
+            {"name": "Sergeli Mediapark",   "code": "SERGELI"},
+            {"name": "Chilonzor markazi",   "code": "CHILONZOR"},
+            {"name": "Yunusobod filiali",   "code": "YUNUSOBOD"},
+            {"name": "Mirzo Ulug'bek",      "code": "MIRZO_ULUGBEK"},
+            {"name": "Yakkasaroy filiali",  "code": "YAKKASAROY"},
+        ),
+    },
+    {
+        "name": "Toshkent viloyati",
+        "branches": (
+            {"name": "Chirchiq filiali",      "code": "CHIRCHIQ"},
+            {"name": "Olmaliq filiali",        "code": "OLMALIQ"},
+            {"name": "Nurafshon filiali",      "code": "NURAFSHON"},
+            {"name": "Bekobod filiali",        "code": "BEKOBOD"},
+            {"name": "Angren filiali",         "code": "ANGREN"},
+            {"name": "Zangiota filiali",       "code": "ZANGIOTA"},
+        ),
+    },
+)
+
+# ── Seed markers ────────────────────────────────────────────────────
 SEED_PREFIX = "seed-"
 SEED_IMPORT_PREFIX = "seed_data_"
 SEED_BATCH_PREFIX = "seed_"
@@ -31,11 +57,7 @@ LEGACY_SEED_ANNOUNCEMENTS = (
     "Supervisorlar uchun eslatma",
 )
 
-BRANCHES = (
-    {"name": "Novza metro", "code": "NOVZA"},
-    {"name": "Sergeli Mediapark", "code": "SERGELI"},
-)
-
+# ── Users ───────────────────────────────────────────────────────────
 INITIAL_USERS = (
     {
         "username": "azizbek.karimov",
@@ -43,6 +65,7 @@ INITIAL_USERS = (
         "first_name": "Azizbek",
         "last_name": "Karimov",
         "role": "operator",
+        "region": "Toshkent shahri",
         "branch": "Novza metro",
         "is_staff": False,
         "is_superuser": False,
@@ -53,6 +76,7 @@ INITIAL_USERS = (
         "first_name": "Dilshod",
         "last_name": "Rahimov",
         "role": "supervisor",
+        "region": "Toshkent shahri",
         "branch": None,
         "is_staff": True,
         "is_superuser": False,
@@ -63,7 +87,8 @@ INITIAL_USERS = (
         "first_name": "Malika",
         "last_name": "Abdullayeva",
         "role": "manager",
-        "branch": None,
+        "region": "Toshkent shahri",
+        "branch": "Sergeli Mediapark",
         "is_staff": True,
         "is_superuser": False,
     },
@@ -73,9 +98,67 @@ INITIAL_USERS = (
         "first_name": "Sardor",
         "last_name": "Yusupov",
         "role": "admin",
+        "region": "Toshkent shahri",
         "branch": None,
         "is_staff": True,
         "is_superuser": True,
+    },
+    # ── Extra operators (Toshkent shahri) ───
+    {
+        "username": "jasur.toshmatov",
+        "password": "Jasur2026!",
+        "first_name": "Jasur",
+        "last_name": "Toshmatov",
+        "role": "operator",
+        "region": "Toshkent shahri",
+        "branch": "Chilonzor markazi",
+        "is_staff": False,
+        "is_superuser": False,
+    },
+    {
+        "username": "nodira.alimova",
+        "password": "Nodira2026!",
+        "first_name": "Nodira",
+        "last_name": "Alimova",
+        "role": "operator",
+        "region": "Toshkent shahri",
+        "branch": "Yunusobod filiali",
+        "is_staff": False,
+        "is_superuser": False,
+    },
+    # ── Toshkent viloyati supervisor & operators ───
+    {
+        "username": "baxtiyor.nazarov",
+        "password": "Baxtiyor2026!",
+        "first_name": "Baxtiyor",
+        "last_name": "Nazarov",
+        "role": "supervisor",
+        "region": "Toshkent viloyati",
+        "branch": None,
+        "is_staff": True,
+        "is_superuser": False,
+    },
+    {
+        "username": "shahlo.karimova",
+        "password": "Shahlo2026!",
+        "first_name": "Shahlo",
+        "last_name": "Karimova",
+        "role": "operator",
+        "region": "Toshkent viloyati",
+        "branch": "Chirchiq filiali",
+        "is_staff": False,
+        "is_superuser": False,
+    },
+    {
+        "username": "otabek.ruziyev",
+        "password": "Otabek2026!",
+        "first_name": "Otabek",
+        "last_name": "Ruziyev",
+        "role": "operator",
+        "region": "Toshkent viloyati",
+        "branch": "Olmaliq filiali",
+        "is_staff": False,
+        "is_superuser": False,
     },
 )
 
@@ -115,7 +198,27 @@ ANNOUNCEMENT_SEEDS = (
         "created_by": "dilshod.rahimov",
         "days_ago": 1,
     },
+    {
+        "title": "Toshkent viloyati — yangi filiallar",
+        "body": "Chirchiq, Olmaliq va Nurafshon filiallari tizimga qo'shildi. Supervisorlar reestrlarni yuklashni boshlang.",
+        "target": "all",
+        "created_by": "malika.abdullayeva",
+        "days_ago": 2,
+    },
 )
+
+
+# ── File ↔ branch mapping ──────────────────────────────────────────
+FILE_BRANCH_MAP = {
+    # data3, data4 → Sergeli Mediapark
+    "data3": "Sergeli Mediapark",
+    "data4": "Sergeli Mediapark",
+    # data2 → Chilonzor
+    "data2": "Chilonzor markazi",
+    # rule → Chirchiq (Toshkent viloyati)
+    "rule": "Chirchiq filiali",
+}
+DEFAULT_BRANCH = "Novza metro"
 
 
 def setup_django():
@@ -141,40 +244,48 @@ def force_timestamps(model, instance, **timestamps):
         setattr(instance, field, value)
 
 
-def ensure_region(Region):
-    region, created = Region.objects.get_or_create(name=REGION_NAME)
-    print_status("region", region.name, created)
-    return region
+def ensure_regions_and_branches(Region, Branch):
+    """Create all regions and branches. Return lookup dicts."""
+    regions_by_name = {}
+    branches_by_name = {}
+
+    for region_cfg in REGIONS:
+        region, created = Region.objects.get_or_create(name=region_cfg["name"])
+        print_status("region", region.name, created)
+        regions_by_name[region.name] = region
+
+        for branch_cfg in region_cfg["branches"]:
+            branch, created = Branch.objects.get_or_create(
+                region=region,
+                name=branch_cfg["name"],
+                defaults={"code": branch_cfg["code"], "is_active": True},
+            )
+            branch.code = branch_cfg["code"]
+            branch.is_active = True
+            branch.save(update_fields=["code", "is_active"])
+            print_status("branch", f"{region.name} / {branch.name}", created)
+            branches_by_name[branch.name] = branch
+
+    return regions_by_name, branches_by_name
 
 
-def ensure_branch(Branch, region, item):
-    branch, created = Branch.objects.get_or_create(
-        region=region,
-        name=item["name"],
-        defaults={"code": item["code"], "is_active": True},
-    )
-    branch.code = item["code"]
-    branch.is_active = True
-    branch.save(update_fields=["code", "is_active"])
-    print_status("branch", f"{region.name} / {branch.name}", created)
-    return branch
-
-
-def ensure_user(User, region, branches_by_name, item):
+def ensure_user(User, regions_by_name, branches_by_name, item):
+    region = regions_by_name.get(item["region"])
     branch = branches_by_name.get(item["branch"]) if item["branch"] else None
     user, created = User.objects.get_or_create(username=item["username"])
     user.email = ""
     user.first_name = item["first_name"]
     user.last_name = item["last_name"]
     user.role = item["role"]
-    user.region = branch.region if branch else region
+    user.region = region
     user.branch = branch
     user.is_staff = item["is_staff"]
     user.is_superuser = item["is_superuser"]
     user.is_active = True
     user.set_password(item["password"])
     user.save()
-    print_status("user", f"{user.get_full_name()} ({user.username}, {user.role})", created)
+    location = branch.name if branch else region.name
+    print_status("user", f"{user.get_full_name()} ({user.username}, {user.role}, {location})", created)
     return user
 
 
@@ -239,10 +350,24 @@ def seed_original_filename(path):
 
 
 def branch_for_file(path, branches_by_name):
-    relative_parts = {part.lower() for part in path.relative_to(DATA_DIR).parts}
-    if {"data3", "data4"} & relative_parts:
-        return branches_by_name["Sergeli Mediapark"]
-    return branches_by_name["Novza metro"]
+    """Determine branch by first-level folder name under data/."""
+    relative_parts = path.relative_to(DATA_DIR).parts
+    if relative_parts:
+        folder = relative_parts[0].lower()
+        branch_name = FILE_BRANCH_MAP.get(folder)
+        if branch_name and branch_name in branches_by_name:
+            return branches_by_name[branch_name]
+    return branches_by_name[DEFAULT_BRANCH]
+
+
+def region_for_branch(branch, regions_by_name):
+    """Return region object for a branch."""
+    for region_cfg in REGIONS:
+        for branch_cfg in region_cfg["branches"]:
+            if branch_cfg["name"] == branch.name:
+                return regions_by_name[region_cfg["name"]]
+    # fallback
+    return branch.region
 
 
 def spread_batch_dates(UploadBatch, RegistryRecord, batch, branch, region, order_index, total_files):
@@ -268,7 +393,7 @@ def spread_batch_dates(UploadBatch, RegistryRecord, batch, branch, region, order
         )
 
 
-def import_data_files(UploadBatch, RegistryRecord, operator, region, branches_by_name):
+def import_data_files(UploadBatch, RegistryRecord, operator, regions_by_name, branches_by_name):
     from django.core.files import File
     from records.services import import_excel_file
 
@@ -276,6 +401,7 @@ def import_data_files(UploadBatch, RegistryRecord, operator, region, branches_by
     files = data_files()
     for index, path in enumerate(files, start=1):
         branch = branch_for_file(path, branches_by_name)
+        region = region_for_branch(branch, regions_by_name)
         original_filename = seed_original_filename(path)
         with path.open("rb") as handle:
             upload = File(handle, name=original_filename)
@@ -284,16 +410,18 @@ def import_data_files(UploadBatch, RegistryRecord, operator, region, branches_by
         imported_batches.append(batch)
         print(
             "batch: "
-            f"{original_filename} - imported {batch.imported_count}, "
+            f"{original_filename} -> {region.name}/{branch.name} - "
+            f"imported {batch.imported_count}, "
             f"duplicate {batch.duplicate_count}, skipped {batch.skipped_count}"
         )
     return imported_batches
 
 
-def seed_announcements(Announcement, region, users_by_username):
+def seed_announcements(Announcement, regions_by_name, users_by_username):
     from django.utils import timezone
 
     now = timezone.now()
+    toshkent_shahar = regions_by_name["Toshkent shahri"]
     announcements = []
     for item in ANNOUNCEMENT_SEEDS:
         created_at = now - timedelta(days=item["days_ago"], minutes=20)
@@ -303,7 +431,7 @@ def seed_announcements(Announcement, region, users_by_username):
             defaults={
                 "body": item["body"],
                 "target": item["target"],
-                "assigned_region": region if item["target"] == "operator" else None,
+                "assigned_region": toshkent_shahar if item["target"] == "operator" else None,
                 "assigned_branch": None,
                 "is_active": True,
             },
@@ -343,6 +471,14 @@ def seed_audit_logs(AuditLog, users_by_username, batches, announcements):
     create_audit(AuditLog, supervisor, "operator_created", operator, operator.get_full_name(), now - timedelta(days=33))
     create_audit(AuditLog, manager, "operator_updated", operator, operator.get_full_name(), now - timedelta(days=30))
 
+    # Audit for extra users
+    if "baxtiyor.nazarov" in users_by_username:
+        vil_supervisor = users_by_username["baxtiyor.nazarov"]
+        create_audit(AuditLog, manager, "supervisor_created", vil_supervisor, vil_supervisor.get_full_name(), now - timedelta(days=28))
+    if "jasur.toshmatov" in users_by_username:
+        extra_op = users_by_username["jasur.toshmatov"]
+        create_audit(AuditLog, supervisor, "operator_created", extra_op, extra_op.get_full_name(), now - timedelta(days=27))
+
     for index, batch in enumerate(batches, start=1):
         create_audit(
             AuditLog,
@@ -374,7 +510,7 @@ def seed_audit_logs(AuditLog, users_by_username, batches, announcements):
             {"target": announcement.target},
         )
 
-    print(f"audit: {4 + len(batches) + len(announcements)} seed events created")
+    print(f"audit: {6 + len(batches) + len(announcements)} seed events created")
 
 
 def seed_initial_data():
@@ -383,23 +519,24 @@ def seed_initial_data():
 
     cleanup_seed_data(User, UploadBatch, RegistryRecord, Announcement, AuditLog)
 
-    region = ensure_region(Region)
-    branches = [ensure_branch(Branch, region, item) for item in BRANCHES]
-    branches_by_name = {branch.name: branch for branch in branches}
+    regions_by_name, branches_by_name = ensure_regions_and_branches(Region, Branch)
 
-    users = [ensure_user(User, region, branches_by_name, item) for item in INITIAL_USERS]
+    users = [ensure_user(User, regions_by_name, branches_by_name, item) for item in INITIAL_USERS]
     users_by_username = {user.username: user for user in users}
     operator = users_by_username["azizbek.karimov"]
 
-    batches = import_data_files(UploadBatch, RegistryRecord, operator, region, branches_by_name)
-    announcements = seed_announcements(Announcement, region, users_by_username)
+    batches = import_data_files(UploadBatch, RegistryRecord, operator, regions_by_name, branches_by_name)
+    announcements = seed_announcements(Announcement, regions_by_name, users_by_username)
     seed_audit_logs(AuditLog, users_by_username, batches, announcements)
 
     print("")
-    print("Test login/parollar:")
+    print("=" * 60)
+    print("  SETUP COMPLETE — Test login/parollar:")
+    print("=" * 60)
     for item, user in zip(INITIAL_USERS, users):
         location = user.branch.name if user.branch else user.region.name
-        print(f"- {user.role}: {user.username} / {item['password']} / {location}")
+        print(f"  {user.role:12s}: {user.username} / {item['password']} / {location}")
+    print("=" * 60)
 
 
 def main():

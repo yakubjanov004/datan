@@ -1,5 +1,4 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { useEffect } from "react";
 
 import { useAuth } from "./auth/AuthContext.jsx";
 import {
@@ -22,12 +21,14 @@ import GuidePage from "./pages/GuidePage.jsx";
 import HelpPage from "./pages/HelpPage.jsx";
 import KpiPage from "./pages/KpiPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
+import ManagerWorkspacePage from "./pages/management/ManagerWorkspacePage.jsx";
 import RoleWorkspacePage from "./pages/management/RoleWorkspacePage.jsx";
 import OperatorsPage from "./pages/OperatorsPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import RecordsPage from "./pages/RecordsPage.jsx";
 import UploadPage from "./pages/UploadPage.jsx";
 import SettingsPage from "./pages/SettingsPage.jsx";
+import SupervisorMonitoringPage from "./pages/supervisor/SupervisorMonitoringPage.jsx";
 import { useI18n } from "./localization/i18n.jsx";
 
 function ProtectedRoute({ children }) {
@@ -70,27 +71,6 @@ function HomeRoute() {
 }
 
 export default function App() {
-  useEffect(() => {
-    function preventKeyboardZoom(event) {
-      if (!event.ctrlKey && !event.metaKey) return;
-      if (["+", "-", "=", "_", "0"].includes(event.key)) {
-        event.preventDefault();
-      }
-    }
-
-    function preventWheelZoom(event) {
-      if (event.ctrlKey || event.metaKey) {
-        event.preventDefault();
-      }
-    }
-
-    window.addEventListener("keydown", preventKeyboardZoom, { passive: false });
-    window.addEventListener("wheel", preventWheelZoom, { passive: false });
-    return () => {
-      window.removeEventListener("keydown", preventKeyboardZoom);
-      window.removeEventListener("wheel", preventWheelZoom);
-    };
-  }, []);
 
   return (
     <Routes>
@@ -166,10 +146,18 @@ export default function App() {
           }
         />
         <Route
+          path="supervisor-monitoring"
+          element={
+            <ManagementRoute>
+              <SupervisorMonitoringPage />
+            </ManagementRoute>
+          }
+        />
+        <Route
           path="manager"
           element={
             <AnyRoleRoute roles={[ROLE_MANAGER]}>
-              <RoleWorkspacePage mode="manager" />
+              <ManagerWorkspacePage />
             </AnyRoleRoute>
           }
         />

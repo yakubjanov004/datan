@@ -1,4 +1,4 @@
-﻿/* Uzbek Latin translations. */
+/* Uzbek Latin translations. */
 
 export const uz = {
   htmlLang: "uz",
@@ -89,7 +89,9 @@ export const uz = {
     sections: {
       operations: "Asosiy",
       data: "Ma'lumotlar",
-      supervision: "Supervisor",
+      overview: "Umumiy",
+      monitoring: "Monitoring",
+      supervision: "Nazorat",
       management: "Boshqaruv",
       admin: "Admin",
       system: "Supervisor"
@@ -117,6 +119,8 @@ export const uz = {
       operators: "Operatorlar",
       operatorsShort: "Operatorlar",
       audit: "Audit",
+      monitoring: "Operator monitoring",
+      monitoringShort: "Monitoring",
       managerWorkspace: "Manager paneli",
       managerWorkspaceShort: "Manager",
       adminWorkspace: "Admin paneli",
@@ -431,5 +435,32 @@ export const uz = {
       activated: "aktiv qilindi",
       blocked: "bloklandi"
     }
+  },
+  monitoring: {
+    title: "Operator monitoring",
+    subtitle: "Hududingizdagi operatorlar faolligini real vaqtda kuzating",
+    operatorStatus: "Operator holati",
+    todayActivity: "Bugungi faollik",
+    timeline: "Yuklashlar jadvali",
+    lastUpload: "Oxirgi yuklash",
+    todayImports: "Bugun import",
+    todayUploads: "Bugun yuklash",
+    totalRecords: "Jami yozuv",
+    totalUploads: "Jami yuklash",
+    activeNow: "Faol",
+    inactive: "Faol emas",
+    neverUploaded: "Hech yuklash qilmagan",
+    noUploadsToday: "Bugun yuklamagan",
+    uploadedToday: "Bugun yuklagan",
+    allOperators: "Barcha operatorlar",
+    activeOperators: "Faol operatorlar",
+    missingToday: "Bugun yuklamagan",
+    branchBreakdown: "Filial kesimi",
+    noOperators: "Operatorlar topilmadi.",
+    timeAgo: "oldin",
+    justNow: "Hozirgina",
+    minutesAgo: "daqiqa oldin",
+    hoursAgo: "soat oldin",
+    daysAgo: "kun oldin"
   }
 };

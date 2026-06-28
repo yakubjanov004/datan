@@ -111,9 +111,9 @@ function buildSalesActivity(series, days = 30) {
 const sourceColors = {
   mobile: {
     id: "gradMobile",
-    css: "linear-gradient(135deg, #2563eb 0%, #1f7a8c 100%)",
+    css: "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
     svgStart: "#2563eb",
-    svgEnd: "#1f7a8c",
+    svgEnd: "#1d4ed8",
   },
   internet: {
     id: "gradInternet",

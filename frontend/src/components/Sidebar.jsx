@@ -48,7 +48,7 @@ export default function Sidebar({ mobileOpen = false, onClose = () => {} }) {
         {visibleSections.map((section) => (
           <div
             className={
-              "nav-section" + (["supervision", "management", "admin"].includes(section.key) ? " manager-section" : "")
+              "nav-section" + (["sv_control", "sv_monitoring", "management", "admin"].includes(section.key) ? " manager-section" : "")
             }
             key={section.key}
           >
