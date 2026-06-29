@@ -16,9 +16,10 @@ bo'limlarni o'qi, keyin kodga teg.
 8. `03-frontend/ui-localization.md` - UI, CSS va localization qoidalari.
 9. `03-frontend/color-system.md` - ranglar o'zgarmasligi kerak bo'lgan brend qoidalari.
 10. `03-frontend/sidebar-roles.md` - 4 ta role sidebar sectionlari va linklari bo'yicha kelishuv.
-11. `04-workflows/task-flow.md` - agentning ish tartibi.
-12. `04-workflows/review-checklist.md` - review va yakuniy tekshiruv checklist.
-13. `05-safety/do-not-do.md` - qat'iy qilinmaydigan ishlar.
+11. `03-frontend/mobile-design.md` - telefon dizayni, LAN ochilishi va mobil tekshiruv qoidalari.
+12. `04-workflows/task-flow.md` - agentning ish tartibi.
+13. `04-workflows/review-checklist.md` - review va yakuniy tekshiruv checklist.
+14. `05-safety/do-not-do.md` - qat'iy qilinmaydigan ishlar.
 
 ## Asosiy prinsip
 
