@@ -238,10 +238,10 @@ export default function DashboardPage() {
     name: t.dashboard.shortWeekdays[new Date(item.key).getDay()],
     records: item.count
   }));
-  const maxWeeklyIndex = weeklyChartData.reduce((maxIdx, current, idx, arr) => 
+  const maxWeeklyIndex = weeklyChartData.reduce((maxIdx, current, idx, arr) =>
     current.records > arr[maxIdx].records ? idx : maxIdx, 0
   );
-  
+
   const currentMonthYear = formatDashboardMonthLabel(t, fmt);
 
   const qualitySegments = [
@@ -254,7 +254,7 @@ export default function DashboardPage() {
   return (
     <section className="page-stack dashboard-page stats-overview-page">
       <div className="dashboard-frame stats-overview-shell">
-        <div className="help-hero-banner" style={{ minHeight: "180px", marginBottom: "24px", background: "radial-gradient(circle at 90% 14%, rgba(255, 255, 255, 0.15), transparent 40%), var(--brand-gradient)", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "flex-start", position: "relative" }}>
+        <div className="help-hero-banner" style={{ background: "radial-gradient(circle at 90% 14%, rgba(255, 255, 255, 0.15), transparent 40%), var(--brand-gradient)", position: "relative" }}>
           <div className="help-hero-content" style={{ position: "relative", zIndex: 2, display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
             <h1>{hero.title}</h1>
             <p>{hero.intro}</p>
@@ -345,16 +345,16 @@ export default function DashboardPage() {
               <section className="panel stats-revenue-card v2-card-white">
                 <div className="stats-card-top">
                   <span>{t.dashboard.enteredThisMonth}</span>
-                  <ArrowUpRight 
-                    size={17} 
+                  <ArrowUpRight
+                    size={17}
                     onClick={() => {
                       const startOfMonth = new Date();
                       startOfMonth.setDate(1);
                       const dateFrom = startOfMonth.toISOString().split('T')[0];
                       const dateTo = new Date().toISOString().split('T')[0];
                       navigate(`/records?date_from=${dateFrom}&date_to=${dateTo}`);
-                    }} 
-                    style={{ cursor: "pointer" }} 
+                    }}
+                    style={{ cursor: "pointer" }}
                   />
                 </div>
                 <strong>{formatNumber(importedThisMonth)}</strong>
@@ -377,22 +377,23 @@ export default function DashboardPage() {
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={revenueChartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                    <XAxis 
-                      dataKey="key" 
-                      axisLine={false} 
-                      tickLine={false} 
+                    <XAxis
+                      dataKey="key"
+                      axisLine={false}
+                      tickLine={false}
                       tick={{ fill: '#94a3b8', fontSize: 11 }}
+                      padding={{ left: 15, right: 15 }}
                       tickFormatter={(val) => {
                         const d = new Date(val);
                         return d.getDate() + "." + (d.getMonth() + 1).toString().padStart(2, '0');
                       }}
                     />
-                    <YAxis 
-                      axisLine={false} 
-                      tickLine={false} 
+                    <YAxis
+                      axisLine={false}
+                      tickLine={false}
                       tick={{ fill: '#94a3b8', fontSize: 11 }}
                       tickFormatter={(val) => new Intl.NumberFormat("en-US", { notation: "compact", maximumFractionDigits: 1 }).format(val)}
-                      domain={['auto', 'auto']} 
+                      domain={['auto', 'auto']}
                     />
                     <defs>
                       <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
@@ -447,7 +448,7 @@ export default function DashboardPage() {
               </div>
               <div className="v2-bar-chart">
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={weeklyChartData} margin={{ top: 20, right: 0, left: -20, bottom: 0 }}>
+                  <BarChart data={weeklyChartData} margin={{ top: 30, right: 0, left: -20, bottom: 0 }}>
                     <defs>
                       <pattern id="diagonalStripes" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
                         <rect width="10" height="10" fill="#eff6ff" />
@@ -459,15 +460,15 @@ export default function DashboardPage() {
                       </linearGradient>
                     </defs>
                     <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 11 }} />
-                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 11 }} />
+                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 11 }} padding={{ left: 15, right: 15 }} />
                     <Tooltip cursor={{ fill: 'transparent' }} contentStyle={{ borderRadius: 8, border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }} />
                     <Bar dataKey="records" radius={[10, 10, 10, 10]} barSize={44} background={{ fill: '#f8fafc', radius: 10 }} minPointSize={5}>
                       <LabelList dataKey="records" content={(props) => {
                         const { x, y, width, value, index } = props;
                         if (index !== maxWeeklyIndex || value === 0) return null;
                         return (
-                          <g transform={`translate(${x + width / 2}, ${y + 16})`}>
-                            <rect x="-18" y="-12" width="36" height="24" rx="6" fill="#ffffff" />
+                          <g transform={`translate(${x + width / 2}, ${y - 10})`}>
+                            <rect x="-18" y="-12" width="36" height="24" rx="6" fill="#ffffff" style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.08))' }} />
                             <text x="0" y="4" fill="#1e293b" fontSize="12" fontWeight="600" textAnchor="middle">{value}</text>
                           </g>
                         );
@@ -523,7 +524,7 @@ export default function DashboardPage() {
                               <div key={i} className={`v2-dot ${isFilled ? 'filled' : 'empty'}`} />
                             ))}
                             {showLabel && <span className="v2-dot-label">{item.label}</span>}
-                            
+
                             <div className="v2-dot-tooltip">
                               <div className="tooltip-item">
                                 <i style={{ background: '#2563eb' }}></i>
@@ -549,7 +550,7 @@ export default function DashboardPage() {
                 <button className="stats-panel-more" onClick={() => navigate("/records")}><ArrowUpRight size={17} /></button>
               </div>
 
-              <div className="v2-radial-container" style={{ display: 'flex', justifyContent: 'center', position: 'relative', height: '180px', marginTop: '20px' }}>
+              <div className="v2-radial-container" style={{ display: 'flex', justifyContent: 'center', position: 'relative', marginTop: '10px' }}>
                 <svg viewBox="0 0 320 160" style={{ width: '100%', height: '100%', maxWidth: '320px', overflow: 'visible' }}>
                   {(() => {
                     const numSegments = 26;
@@ -557,7 +558,7 @@ export default function DashboardPage() {
                     const segmentColors = [];
                     sourceRows.forEach(item => {
                       let count = Math.round((item.records / totalCatRecords) * numSegments);
-                      for(let i = 0; i < count; i++) {
+                      for (let i = 0; i < count; i++) {
                         if (segmentColors.length < numSegments) {
                           segmentColors.push(item.color);
                         }
@@ -566,7 +567,7 @@ export default function DashboardPage() {
                     while (segmentColors.length < numSegments) {
                       segmentColors.push(sourceRows[sourceRows.length - 1]?.color || "#e2e8f0");
                     }
-                    
+
                     return segmentColors.map((color, i) => {
                       const angle = 180 + (i * (180 / (numSegments - 1)));
                       return (

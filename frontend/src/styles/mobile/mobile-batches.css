@@ -3,15 +3,24 @@
 @media (max-width: 768px) {
   .batches-page {
     gap: 0;
+    display: flex !important;
+    flex-direction: column;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   .batches-table-panel {
+    display: flex !important;
+    flex-direction: column;
+    height: auto !important;
     min-height: auto !important;
-    overflow: visible;
+    max-height: none !important;
+    overflow: visible !important;
     border: 0 !important;
     border-radius: 0;
     background: transparent !important;
     box-shadow: none !important;
+    flex-shrink: 0 !important;
   }
 
   .batches-filter-heading {

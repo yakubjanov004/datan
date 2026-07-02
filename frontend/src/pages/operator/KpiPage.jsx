@@ -230,7 +230,7 @@ export default function KpiPage() {
     <section className="page-stack operator-page operator-kpi-page">
       <div className="kpi-top-grid">
         <section className="panel kpi-primary-panel">
-          <small style={{ fontSize: '16px', fontWeight: '700', color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.8px', marginBottom: '8px', display: 'block' }}>{t.kpi.allPeriod}</small>
+          {/* Removed allPeriod text per user request */}
           <h2 style={{ margin: 0 }}>{t.kpi.totalSales}</h2>
           <span className="kpi-primary-value">{money(totalAmount)}</span>
         </section>
@@ -301,8 +301,8 @@ export default function KpiPage() {
                       data={sourcePieData}
                       dataKey="value"
                       nameKey="name"
-                      innerRadius={46}
-                      outerRadius={76}
+                      innerRadius="65%"
+                      outerRadius="100%"
                       paddingAngle={0}
                       stroke="none"
                     >

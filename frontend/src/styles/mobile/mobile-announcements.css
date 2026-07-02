@@ -3,6 +3,10 @@
 @media (max-width: 768px) {
   .operator-announcements-page {
     gap: 10px;
+    display: flex !important;
+    flex-direction: column;
+    height: auto !important;
+    overflow: visible !important;
   }
 
   .operator-announcements-page .help-hero-banner {
@@ -39,9 +43,11 @@
 
   .announcements-layout,
   .announcements-layout.reader-only {
-    display: grid;
-    grid-template-columns: 1fr !important;
+    display: flex !important;
+    flex-direction: column;
+    height: auto !important;
     gap: 10px;
+    flex-shrink: 0 !important;
   }
 
   .announcement-create-panel,
@@ -51,6 +57,8 @@
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.94);
     box-shadow: 0 12px 28px rgba(15, 35, 70, 0.06);
+    height: auto !important;
+    flex-shrink: 0 !important;
   }
 
   .announcement-create-panel .panel-heading,

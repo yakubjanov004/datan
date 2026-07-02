@@ -190,18 +190,33 @@
   transform: none;
 }
 
-[data-theme="dark"] .sidebar a,
-[data-theme="dark"] .sidebar a:hover,
-[data-theme="dark"] .sidebar a.active,
-[data-theme="dark"] .logout-button,
-[data-theme="dark"] .logout-button:hover {
-  background-image: none;
+.sidebar-role-operator .sidebar-nav-link-always-colored,
+[data-theme="dark"] .sidebar-role-operator .sidebar-nav-link-always-colored {
+  background: var(--brand-gradient) !important;
+  box-shadow: 0 10px 18px var(--blue-glow) !important;
+  color: #ffffff !important;
 }
 
-[data-theme="dark"] .sidebar a.active {
-  background: var(--blue) !important;
+.sidebar-role-operator .sidebar-nav-link-always-colored svg,
+[data-theme="dark"] .sidebar-role-operator .sidebar-nav-link-always-colored svg {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+.sidebar-role-operator .sidebar-nav-link-always-colored:not(.active):hover,
+[data-theme="dark"] .sidebar-role-operator .sidebar-nav-link-always-colored:not(.active):hover {
+  background: var(--brand-gradient) !important;
+  color: #ffffff !important;
   box-shadow: 0 10px 18px var(--blue-glow) !important;
 }
+
+.sidebar-role-operator .sidebar-nav-link-always-colored:not(.active):hover svg,
+[data-theme="dark"] .sidebar-role-operator .sidebar-nav-link-always-colored:not(.active):hover svg {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+/* Let color-harmony.css naturally handle normal active links */
 
 .nav-label-full,
 .logout-button span {

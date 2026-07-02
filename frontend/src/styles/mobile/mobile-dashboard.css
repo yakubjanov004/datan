@@ -3,13 +3,18 @@
 @media (max-width: 768px) {
   .dashboard-page.stats-overview-page {
     gap: 0;
+    height: auto !important;
+    max-height: none !important;
+    overflow-y: visible !important;
   }
 
   .dashboard-page .stats-overview-shell {
-    display: grid;
+    display: flex !important;
+    flex-direction: column;
     gap: 10px;
     padding: 0 !important;
     background: transparent !important;
+    height: auto !important;
   }
 
   .dashboard-page .help-hero-banner {
@@ -41,6 +46,9 @@
 
   .stats-dashboard-grid-v2 {
     gap: 9px;
+    display: flex !important;
+    flex-direction: column;
+    height: auto;
   }
 
   .stats-grid-v2-top,
@@ -48,6 +56,7 @@
     display: flex !important;
     flex-direction: column;
     gap: 9px;
+    flex-shrink: 0 !important;
   }
 
   .stats-grid-v2-top > .stats-stacked-col {
@@ -65,7 +74,7 @@
   .stats-stacked-col {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: none;
+    grid-template-rows: auto;
     gap: 8px;
   }
 

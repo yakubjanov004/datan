@@ -19,6 +19,7 @@
     radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%);
   position: relative;
   overflow: hidden;
+  font-weight: 400;
 }
 
 .login-screen::before {
@@ -56,7 +57,7 @@
   min-height: 28px;
   padding: 0 10px;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   border: none;
   background: transparent;
   color: var(--ink-dim);
@@ -126,7 +127,7 @@
 
 .login-brand-text {
   font-size: 22px;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
@@ -149,7 +150,7 @@
 
 .login-field label {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--ink-dim);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -184,6 +185,7 @@
   min-height: 48px;
   padding: 10px 14px 10px 42px;
   font-size: 16px;
+  font-weight: 400;
   color: var(--ink);
   background: var(--bg-secondary);
   border: 1px solid var(--line-strong);
@@ -208,7 +210,7 @@
   min-height: 48px;
   padding: 11px 13px;
   font-size: 13px;
-  font-weight: 650;
+  font-weight: 400;
   line-height: 1.35;
 }
 
@@ -226,16 +228,16 @@
 .login-mock-sms span {
   color: var(--muted);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
-.login-mock-sms strong {
+.login-mock-code {
   border-radius: 10px;
   background: var(--brand-gradient);
   padding: 7px 11px;
   color: #ffffff;
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 400;
   line-height: 1;
   letter-spacing: 0.08em;
 }
@@ -252,7 +254,7 @@
   background: var(--bg-secondary);
   color: var(--ink-dim);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .login-field input::placeholder {
@@ -289,7 +291,7 @@
   border-radius: 50%;
   background: rgba(239, 68, 68, 0.2);
   color: var(--danger);
-  font-weight: 700;
+  font-weight: 400;
   font-size: 11px;
   flex-shrink: 0;
 }
@@ -306,7 +308,7 @@
   border: none;
   border-radius: 14px;
   color: #fff;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -350,9 +352,9 @@
   line-height: 1.5;
 }
 
-.login-support strong {
+.login-support-phone {
   color: var(--ink-dim);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .login-footer {
@@ -367,7 +369,7 @@
 }
 
 .login-footer strong {
-  font-weight: 600;
+  font-weight: 400;
   color: var(--ink-dim);
 }
 

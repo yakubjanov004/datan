@@ -169,6 +169,9 @@ export const ru = {
   },
   settings: {
     ...uz.settings,
+    heroKicker: "Настройки системы",
+    heroTitle: "Настройки",
+    heroDescription: "Настройте язык интерфейса и внешний вид системы под рабочий процесс.",
     languageTitle: "Выбор языка",
     languageDescription: "Выберите язык для текстов интерфейса.",
     themeTitle: "Внешний вид системы",

@@ -164,6 +164,9 @@ export const uz = {
     supportPhone: "+998 77 044 40 00"
   },
   settings: {
+    heroKicker: "Tizim sozlamalari",
+    heroTitle: "Sozlamalar",
+    heroDescription: "Interfeys tili va tizim ko'rinishini ish jarayoningizga moslab boshqaring.",
     languageTitle: "Tilni tanlash",
     languageDescription: "Interfeys matnlari uchun kerakli tilni tanlang.",
     themeTitle: "Tizim ko'rinishi",

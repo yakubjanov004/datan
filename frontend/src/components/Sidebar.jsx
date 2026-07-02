@@ -49,6 +49,12 @@ export default function Sidebar({ mobileOpen = false, onClose = () => {} }) {
 
   function renderDesktopLink(item) {
     const Icon = item.icon;
+    const desktopClasses = [
+      "sidebar-nav-link",
+      `sidebar-nav-link-${linkSlug(item)}`,
+      item.alwaysColored ? "sidebar-nav-link-always-colored" : ""
+    ].filter(Boolean).join(" ");
+
     return (
       <NavLink
         key={item.to}
@@ -56,7 +62,7 @@ export default function Sidebar({ mobileOpen = false, onClose = () => {} }) {
         end={item.to === "/"}
         title={item.label}
         onClick={onClose}
-        className={({ isActive }) => navLinkClass(item, isActive)}
+        className={({ isActive }) => linkClass(item, isActive, desktopClasses)}
       >
         <Icon size={20} strokeWidth={1.5} />
         <span className="nav-label-full">{item.label}</span>
@@ -72,6 +78,7 @@ export default function Sidebar({ mobileOpen = false, onClose = () => {} }) {
       "mobile-nav-link",
       `mobile-nav-link-${linkSlug(item)}`,
       item.mobilePrimary ? "mobile-nav-link-primary" : "",
+      item.alwaysColored ? "mobile-nav-link-always-colored" : "",
       item.mobileTone ? `mobile-nav-link-tone-${item.mobileTone}` : ""
     ].filter(Boolean).join(" ");
 
@@ -95,7 +102,7 @@ export default function Sidebar({ mobileOpen = false, onClose = () => {} }) {
       <div className="brand">
         <img className="brand-logo" src="/logo.svg" alt="Datan Logo" />
         <button className="mobile-close" aria-label={t.common.close} onClick={onClose}>
-          <X size={16} />
+          <X size={24} strokeWidth={2.5} />
         </button>
       </div>
 

@@ -3,7 +3,7 @@
 /* ─── App Shell ───────────────────────────────────────── */
 .app-shell {
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: clamp(240px, 16vw, 320px) minmax(0, 1fr);
   min-height: 100vh;
 }
 

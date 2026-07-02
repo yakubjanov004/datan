@@ -207,7 +207,7 @@ export default function BatchesPage() {
             <tbody>
               {batches.map((batch) => (
                 <tr key={batch.id}>
-                  <td data-label={t.common.file} style={{ fontWeight: 600, maxWidth: 220, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                  <td className="batch-file-cell" data-label={t.common.file}>
                     {batch.original_filename}
                   </td>
                   <td data-label={t.common.type}>
@@ -215,12 +215,12 @@ export default function BatchesPage() {
                       {sourceLabel(batch.source_type, t)}
                     </span>
                   </td>
-                  <td data-label={t.common.operator} style={{ fontWeight: 600 }}>{batch.uploaded_by_username}</td>
+                  <td data-label={t.common.operator}>{batch.uploaded_by_username}</td>
                   <td data-label={t.common.region}>{batch.assigned_region_name || "-"}</td>
                   <td data-label={t.common.branch}>{batch.assigned_branch_name || "-"}</td>
                   <td data-label={t.batches.rows} style={{ fontVariantNumeric: 'tabular-nums' }}>{batch.rows_in_file}</td>
                   <td data-label={t.batches.imported}>
-                    <span style={{ color: 'var(--blue-mid)', fontWeight: 700, fontVariantNumeric: 'tabular-nums' }}>
+                    <span className="batch-imported-count">
                       {batch.imported_count}
                     </span>
                   </td>
@@ -253,7 +253,7 @@ export default function BatchesPage() {
             <button type="button" disabled={!meta.previous} onClick={() => setPage(page - 1)}>
               {t.common.previous}
             </button>
-            <strong>{page}</strong>
+            <span className="pagination-current">{page}</span>
             <button type="button" disabled={!meta.next} onClick={() => setPage(page + 1)}>
               {t.common.next}
             </button>

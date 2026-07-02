@@ -600,12 +600,19 @@
 
 .stats-overview-page {
   gap: 0;
+  height: calc(100vh - 64px);
+  max-height: calc(100vh - 64px);
+  overflow: hidden;
+  font-weight: 400;
 }
 
 .dashboard-page .stats-overview-shell {
-  display: grid;
-  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -1464,37 +1471,42 @@
 /* ========================================================= */
 
 .stats-dashboard-grid-v2 {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  display: grid;
+  grid-template-rows: minmax(180px, 0.52fr) minmax(220px, 0.48fr);
+  gap: 12px;
   width: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .stats-grid-v2-top {
   display: grid;
   grid-template-columns: minmax(280px, 1fr) minmax(360px, 1.4fr) minmax(380px, 1.5fr);
-  gap: 16px;
+  gap: 12px;
   align-items: stretch;
+  min-height: 0;
 }
 
 .stats-grid-v2-bottom {
   display: grid;
   grid-template-columns: minmax(0, 1.8fr) minmax(320px, 1fr);
-  gap: 16px;
+  gap: 12px;
   align-items: stretch;
+  min-height: 0;
 }
 
 .stats-stacked-col {
   display: grid;
   grid-template-rows: 1fr 1fr;
-  gap: 16px;
+  gap: 10px;
+  min-height: 0;
 }
 
 .v2-card-blue,
 .v2-card-white,
 .v2-chart-card {
   border-radius: 16px;
-  padding: 20px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 4px 12px rgba(15, 35, 70, 0.03);
@@ -1502,13 +1514,53 @@
   background: #ffffff;
   position: relative;
   overflow: hidden;
+  min-height: 0;
+}
+
+.stats-overview-page .help-hero-banner {
+  flex: 0 0 auto;
+  min-height: 120px;
+  padding: 28px 36px;
+  border-radius: 20px;
+}
+
+.stats-overview-page .help-hero-banner h1 {
+  font-size: 28px;
+  margin: 0 0 6px;
+}
+
+.stats-overview-page .help-hero-banner p {
+  font-size: 14px;
+  margin: 0;
+  opacity: 0.85;
+}
+
+.stats-overview-page .help-hero-decoration {
+  width: 240px;
+  height: 240px;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+}
+
+.stats-overview-page .stats-toolbar {
+  flex: 0 0 auto;
+}
+
+.stats-overview-page .help-hero-banner :where(h1, p) {
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}
+
+.stats-dashboard-grid-v2 :where(h2, h3) {
+  font-weight: 500 !important;
 }
 
 .v2-card-blue {
   background: var(--brand-gradient);
   color: #ffffff;
   border: none;
-  min-height: 160px;
+  min-height: 0;
 }
 
 .stats-dashboard-grid-v2 .stats-revenue-card::before,
@@ -1541,7 +1593,7 @@
   color: #ffffff;
   margin-top: 24px;
   font-size: 38px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.5px;
 }
 
@@ -1564,7 +1616,8 @@
 .v2-card-white {
   background: linear-gradient(135deg, #f8fbff 0%, #eff6ff 52%, #dbeafe 100%);
   border-color: #bfdbfe;
-  min-height: 140px;
+  min-height: 0;
+  justify-content: center;
 }
 
 .stats-dashboard-grid-v2 .v2-card-white::before {
@@ -1591,9 +1644,9 @@
 
 .v2-card-white strong {
   color: #0f172a;
-  margin-top: 24px;
+  margin-top: 8px;
   font-size: 32px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: -0.5px;
 }
 
@@ -1654,12 +1707,16 @@
 }
 
 .v2-area-chart {
-  height: 180px;
+  flex: 1 1 auto;
+  min-height: 120px;
+  height: auto;
   margin: 0 -20px;
 }
 
 .v2-bar-chart {
-  height: 240px;
+  flex: 1 1 auto;
+  min-height: 140px;
+  height: auto;
   margin-top: 10px;
 }
 
@@ -1710,7 +1767,7 @@
 
 .v2-scatter-chart {
   flex: 1;
-  min-height: 280px;
+  min-height: 0;
 }
 
 /* Custom Bubbles / Dots */
@@ -1846,7 +1903,13 @@
 .v2-radial-container {
   position: relative;
   width: 100%;
+  flex: 1 1 auto;
+  min-height: 120px;
   margin-top: 10px;
+}
+
+.stats-dashboard-grid-v2 .v2-radial-container[style] {
+  height: auto !important;
 }
 
 .v2-radial-value {
@@ -1891,6 +1954,24 @@
 }
 
 @media (max-width: 1280px) {
+  .dashboard-page .stats-overview-shell {
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .stats-overview-page {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .stats-dashboard-grid-v2 {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    min-height: 0;
+  }
+
   .stats-grid-v2-top,
   .stats-grid-v2-bottom {
     grid-template-columns: 1fr;

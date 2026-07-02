@@ -39,6 +39,7 @@ export function buildSidebarSections(t, user) {
           label: t.layout.nav.upload,
           mobileLabel: t.layout.nav.uploadShort,
           mobilePrimary: true,
+          alwaysColored: true,
           icon: LayoutGrid,
           roles: [ROLE_OPERATOR]
         }

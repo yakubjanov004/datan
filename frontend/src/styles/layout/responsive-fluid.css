@@ -115,13 +115,7 @@
 
 /* ── Ultra-wide (2560px+) ────────────────────────────────────── */
 @media (min-width: 2560px) {
-  .app-shell {
-    grid-template-columns: 300px minmax(0, 1fr);
-  }
-
-  .sidebar {
-    width: 300px;
-  }
+  /* Let clamp handle sidebar width */
 
   body {
     font-size: 15px;

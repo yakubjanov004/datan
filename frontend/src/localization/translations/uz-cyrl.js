@@ -169,6 +169,9 @@ export const uzCyrl = {
   },
   settings: {
     ...uz.settings,
+    heroKicker: "Тизим созламалари",
+    heroTitle: "Созламалар",
+    heroDescription: "Интерфейс тили ва тизим кўринишини иш жараёнингизга мослаб бошқаринг.",
     languageTitle: "Тилни танлаш",
     languageDescription: "Интерфейс матнлари учун керакли тилни танланг.",
     themeTitle: "Тизим кўриниши",

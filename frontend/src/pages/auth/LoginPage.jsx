@@ -6,6 +6,7 @@ import { useAuth } from "../../auth/AuthContext.jsx";
 import { isOperator } from "../../auth/roles.js";
 import LanguageSwitcher from "../../components/LanguageSwitcher.jsx";
 import { useI18n } from "../../localization/i18n.jsx";
+import { formatUzPhoneNumber } from "../../utils/format.js";
 
 export default function LoginPage() {
   const { isAuthenticated, login, verifySmsLogin, user } = useAuth();
@@ -64,6 +65,13 @@ export default function LoginPage() {
     setError("");
   }
 
+  function handlePhoneChange(event) {
+    setForm((current) => ({
+      ...current,
+      phone_number: formatUzPhoneNumber(event.target.value)
+    }));
+  }
+
   return (
     <main className="login-screen">
       <div className="login-language-wrapper">
@@ -87,9 +95,10 @@ export default function LoginPage() {
                       id="login-phone"
                       autoComplete="tel"
                       inputMode="tel"
+                      type="tel"
                       placeholder={text.phonePlaceholder}
                       value={form.phone_number}
-                      onChange={(e) => setForm({ ...form, phone_number: e.target.value })}
+                      onChange={handlePhoneChange}
                       onFocus={() => setFocused("phone")}
                       onBlur={() => setFocused("")}
                       required
@@ -140,7 +149,7 @@ export default function LoginPage() {
                 {challenge.mock_code && (
                   <div className="login-mock-sms" role="status">
                     <span>{text.mockSmsCode}</span>
-                    <strong>{challenge.mock_code}</strong>
+                    <span className="login-mock-code">{challenge.mock_code}</span>
                   </div>
                 )}
 
@@ -183,7 +192,7 @@ export default function LoginPage() {
             )}
 
             <p className="login-support">
-              {text.support} <strong>{text.supportPhone}</strong>
+              {text.support} <span className="login-support-phone">{text.supportPhone}</span>
             </p>
           </div>
         </section>
